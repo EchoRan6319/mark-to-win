@@ -1,0 +1,10 @@
+.claude
+.vscode
+.idea
+.DS_Store
+*.log
+.env
+node_modules
+dist
+build
+.trae

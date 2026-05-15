@@ -6,75 +6,61 @@ English | [简体中文](README_CN.md)
 
 # Mark to Win
 
-Mark to Win is a universal Skill for converting AI-generated Markdown to Word, PDF, or Excel formats.
+Convert AI-generated Markdown into Word, PDF, or Excel files.
 
 ## Features
 
-- 📄 Multiple output formats: Word (.docx), PDF, Excel (.xlsx) ⚠️ *unstable*
-- 🔧 Simple command-line interface
-- 📊 Preserves Markdown formatting and structure
+- Word (`.docx`), PDF (`.pdf`), and Excel (`.xlsx`) output
+- Pandoc-first workflow with native fallbacks
+- Markdown-aware handling for headings, lists, tables, quotes, and code blocks
+- Optional CJK font support for PDF output
 
-## Files
+## Quick Start
 
-- `SKILL.md`: Skill instructions
-- `scripts/mark_to_win.py`: Markdown conversion helper
+```bash
+python scripts/mark_to_win.py example.md --to docx --output example.docx
+python scripts/mark_to_win.py example.md --to pdf --output example.pdf
+python scripts/mark_to_win.py example.md --to xlsx --output example.xlsx
+```
 
 ## Installation
 
 ### Claude Code
 
 ```bash
-# Clone to Claude skills directory
 git clone https://github.com/EchoRan6319/mark-to-win.git ~/.claude/skills/mark-to-win
 ```
 
-### Manual Installation
+### Manual
 
-1. Download or clone this repository
-2. Copy `SKILL.md` and `scripts/` to your Claude skills directory:
-   ```bash
-   mkdir -p ~/.claude/skills/mark-to-win
-   cp SKILL.md ~/.claude/skills/mark-to-win/
-   cp -r scripts ~/.claude/skills/mark-to-win/
-   ```
-
-### Verify Installation
-
-After installation, the skill will be automatically available in Claude Code. You can verify by checking if `mark-to-win` appears in your skills list.
-
-## Quick Start
+Copy `SKILL.md` and `scripts/` into your Claude skills directory:
 
 ```bash
-python scripts/mark_to_win.py example.md --to docx --output example.docx
-python scripts/mark_to_win.py example.md --to xlsx --output example.xlsx
-python scripts/mark_to_win.py example.md --to pdf --output example.pdf
+mkdir -p ~/.claude/skills/mark-to-win
+cp SKILL.md ~/.claude/skills/mark-to-win/
+cp -r scripts ~/.claude/skills/mark-to-win/
+```
+
+## Usage
+
+```bash
+python scripts/mark_to_win.py input.md --to docx --output output.docx --engine auto
+python scripts/mark_to_win.py input.md --to pdf --output output.pdf --engine html --keep-html
+python scripts/mark_to_win.py input.md --to docx,pdf,xlsx --output-dir exports
 ```
 
 ## Optional Dependencies
 
-The script uses optional dependencies:
+- `python-docx` for Word output
+- `openpyxl` for unstable Excel output
+- `reportlab` for native PDF fallback
 
-- `python-docx` - Word document support
-- `openpyxl` - Excel file support (⚠️ unstable)
-- `reportlab` - PDF generation support
+## Notes
 
-## PDF Optimization
-
-For best PDF fidelity, install and use Pandoc from the Skill workflow when available.
-
-## Usage Examples
-
-```bash
-# Convert to Word document
-python scripts/mark_to_win.py README.md --to docx --output readme.docx
-
-# Convert to Excel spreadsheet (⚠️ unstable - may lose formatting)
-python scripts/mark_to_win.py data.md --to xlsx --output data.xlsx
-
-# Convert to PDF file
-python scripts/mark_to_win.py report.md --to pdf --output report.pdf
-```
+- Use `--engine auto` for most cases.
+- Use `--engine pandoc` when you need higher-fidelity DOCX/PDF output.
+- Use `--engine html` for a GitHub-style PDF reader layout.
 
 ## License
 
-This project is licensed under the MIT License.
+MIT

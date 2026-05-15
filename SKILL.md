@@ -1,6 +1,6 @@
 ---
 name: mark-to-win
-description: Convert AI-generated Markdown into office documents: Word .docx, PDF .pdf, and Excel .xlsx. Use when the user asks to export or convert Markdown/AI output to Word, PDF, Excel, md to docx/pdf/xlsx, report export, table export, document generation, or mentions 马克吐文.
+description: 'Convert AI-generated Markdown into office documents: Word .docx, PDF .pdf, and Excel .xlsx. Use when the user asks to export or convert Markdown/AI output to Word, PDF, Excel, md to docx/pdf/xlsx, report export, table export, document generation, or mentions 马克吐文.'
 ---
 
 # 马克吐文
@@ -146,3 +146,4 @@ The helper script uses optional Python packages when installed:
 - `reportlab` for PDF fallback output.
 
 If an optional dependency is missing, explain which package is needed for that target format and use another available route if possible.
+
